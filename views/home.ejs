@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .heading{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            color: rgb(0, 0, 0);
+            font-family: 'Dancing Script', cursive;
+        }
+        body{
+            padding: 10px;
+        }
+        a{
+            color: white;
+        }      
+        .addBtn,.viewBtn{
+            margin: 10px;
+        }
+        .logout{
+            float: right;
+        }
+        .addBtn{
+            width: 122.5px;
+            height: 29px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 28.8%;
+        }
+        .viewBtn{
+            height: 29px;
+            width: 122.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 60.8%;
+        }
+    
+        .form-control{
+            width: 200px;
+            height: 30px;
+            background-color: white;           
+        }
+        .form-control::placeholder{
+            color: black;
+        }
+        .searchBtn{
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 53.8%;
+        }
+        .searchDiv{
+            position: relative;
+            position: absolute;
+            left: 38.8%;
+        }
+        #suggestionBox{
+            position: absolute;
+            margin-left: 10px;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 50px;
+        }
+        th,td{
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+            width: 6cm;
+        }
+        th{
+            background-color: #92fe9d;
+            height: 10px;
+        }
+        td{
+            height: 70px;
+            background-color: rgb(255, 255, 255);
+            align-content: center;
+        }
+        #closeBtn{
+            position: fixed;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 20px;
+            display: none;
+        }
+        .tableDiv{
+            margin-top: -10px;
+        }
+        .inLineDiv{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px;
+            position: relative;
+            margin-top: 30px;
+        }
+      
+        
+    </style>
+</head>
+<body>
+    <p class="btn btn-sm email btn-success"><i class="bi bi-person"></i>&nbsp;<%=email%></p>
+    <div class="logout">
+        <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+    </div>
+   
+    <h1 class="heading"><i class="bi bi-link-45deg"></i>ULTIMATE URL SHORTENER<i class="bi bi-link-45deg"></i>
+    </h1>
+
+    <div class="inLineDiv">
+        <a href="/url/addurl" class="btn btn-dark addBtn">Add Url</a>
+            <div class="searchDiv">
+                <input type="text" class="form-control" id="search" placeholder="Search URL Title">
+                <div id="suggestionBox" style="display: none;"></div>
+            </div>
+            <button class="btn btn-primary searchBtn" onclick="getSearchItem()"><i class="bi bi-search"></i>&nbsp; Search</button>
+        <a href="/url/viewurl" class="btn btn-dark viewBtn">View Url</a>
+    </div>
+
+
+    <div class="container tableDiv col-lg-7">
+        <table class="table table-bordered" id="tableId">         
+        </table>
+    </div>
+
+    <a href="" class="btn btn-danger btn-sm" id="closeBtn"><i class="bi bi-x"></i></a>
+  
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/javascripts/main.js"></script>
+</body>
+</html>

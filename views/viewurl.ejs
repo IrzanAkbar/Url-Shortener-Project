@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th,td{
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+            width: 6cm;
+        }
+        th{
+            background-color: #92fe9d;
+
+
+            height: 50px;
+        }
+        td{
+            height: 80px;
+            background-color: rgb(255, 255, 255);
+        }
+        .navDiv{
+            margin-top: 20px;
+        }
+        .prevBtn{
+            position: fixed;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .prev{
+            border-radius: 30px;
+        }
+        nav{
+            background-color: lightblue;
+            font-size: 17px;
+            width: 300px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>URL Shortener</h2>
+        
+
+        <% if(data && data.length > 0){ %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Full URL</th>
+                        <th>Short URL</th>
+                        <th>Added Time</th>
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(items => { %>
+                        <tr>
+                            <td><%=items.title%></td>
+                            <td><a href="<%=items.fullurl%>"><%=items.fullurl%></a></td>
+                            <td><a href="/<%=items.shorturl%>"><%=items.shorturl%></a></td>
+                            <td><%=items.addedtime%></td>
+                            <td><a href="/url/update/<%=items._id%>" class="btn btn-dark btn-sm">Update</a>&nbsp;<a href="/url/delete/<%=items._id%>" class="btn btn-dark btn-sm">Delete</a></td>
+
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else{ %>
+            <h1 class="nodata">NO DATA FOUND</h1>
+        <% } %>
+    </div>
+
+
+    <% if(data.length > 0){ %>
+        <div class="navDiv" align="center">
+            <nav>
+                <a href="?page=1">&laquo; First</a>
+                <a href="?page=<%=pagination.prevPage%>">&laquo; Prev</a>
+                <% for(var pn=1; pn<=pagination.totalPages; pn++){ %> 
+                    <% if(pn==pagination.page){ %>
+                        <span><%=pn%></span>
+                    <% } else{ %>
+                        <a href="?page=<%=pn%>"><%=pn%></a>
+                    <% } %>           
+                <% } %>
+                <a href="?page=<%=pagination.nextPage%>">Next &raquo;</a>
+                <a href="?page=<%=pagination.totalPages%>">Last &raquo;</a>
+            </nav>
+        </div>
+    <% } %>
+
+    <div class="prevBtn" align="center">
+        <a href="/" class="btn btn-primary prev">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+    </div>
+    
+        
+</body>
+</html>

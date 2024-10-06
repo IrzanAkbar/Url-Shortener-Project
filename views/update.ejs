@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add URL</title>
+    <style>
+        .error{
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .prevBtn {
+            position: fixed;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .prev{
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Add New URL</h2>
+        <form action="/url/update/<%=data._id%>" method="post">
+            <div class="form-group">
+                <label for="">Title:</label>
+                <input type="text" class="form-control" name="title" value="<%=data.title%>">
+            </div>
+            <div class="form-group">
+                <label for="">URL:</label>
+                <input type="text" class="form-control" name="fullurl" value="<%=data.fullurl%>">
+            </div>
+            <button type="submit" class="btn btnx">UPDATE URL</button>
+        </form>
+        
+    </div>
+
+ 
+ 
+    <div class="prevBtn" align="center">
+        <a href="/" class="btn btn-primary prev">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+    </div>
+</body>
+</html>
